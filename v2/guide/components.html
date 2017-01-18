@@ -2,18 +2,18 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Components - vue.js</title>
+        <title>Components — Vue.js</title>
         <meta charset="utf-8">
         <meta name="description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
         <meta property="og:type" content="article">
-        <meta property="og:title" content="Components - vue.js">
+        <meta property="og:title" content="Components — Vue.js">
         <meta property="og:description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
         <meta property="og:image" content="https://vuejs.org/images/logo.png">
 
         <meta name="twitter:card" content="summary">
-        <meta name="twitter:title" content="Components - vue.js">
+        <meta name="twitter:title" content="Components — Vue.js">
         <meta name="twitter:description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
         <meta name="twitter:image" content="https://vuejs.org/images/logo.png">
 
@@ -943,14 +943,14 @@ new Vue({
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.component(<span class="string">'async-example'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">  setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// Pass the component definition to the resolve callback</span></div><div class="line">    resolve(&#123;</div><div class="line">      <span class="attr">template</span>: <span class="string">'&lt;div&gt;I am async!&lt;/div&gt;'</span></div><div class="line">    &#125;)</div><div class="line">  &#125;, <span class="number">1000</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p>The factory function receives a <code>resolve</code> callback, which should be called when you have retrieved your component definition from the server. You can also call <code>reject(reason)</code> to indicate the load has failed. The <code>setTimeout</code> here is simply for demonstration; How to retrieve the component is entirely up to you. One recommended approach is to use async components together with <a href="http://webpack.github.io/docs/code-splitting.html" target="_blank" rel="external">Webpack’s code-splitting feature</a>:</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.component(<span class="string">'async-webpack-example'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">resolve</span>) </span>&#123;</div><div class="line">  <span class="comment">// This special require syntax will instruct Webpack to</span></div><div class="line">  <span class="comment">// automatically split your built code into bundles which</span></div><div class="line">  <span class="comment">// are loaded over Ajax requests.</span></div><div class="line">  <span class="built_in">require</span>([<span class="string">'./my-async-component'</span>], resolve)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>You can also return a <code>Promise</code> in the resolve function, so with Webpack 2 + ES2015 syntax you can do:</p>
+<p>You can also return a <code>Promise</code> in the factory function, so with Webpack 2 + ES2015 syntax you can do:</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.component(</div><div class="line">  <span class="string">'async-webpack-example'</span>,</div><div class="line">  () =&gt; System.import(<span class="string">'./my-async-component'</span>)</div><div class="line">)</div></pre></td></tr></table></figure>
 <p class="tip">If you’re a <strong>Browserify</strong> user that would like to use async components, its creator has unfortunately <a href="https://github.com/substack/node-browserify/issues/58#issuecomment-21978224" target="_blank" rel="external">made it clear</a> that async loading “is not something that Browserify will ever support.” Officially, at least. The Browserify community has found <a href="https://github.com/vuejs/vuejs.org/issues/620" target="_blank" rel="external">some workarounds</a>, which may be helpful for existing and complex applications. For all other scenarios, we recommend simply using Webpack for built-in, first-class async support.</p>
 
 <h3 id="Component-Naming-Conventions"><a href="#Component-Naming-Conventions" class="headerlink" title="Component Naming Conventions"></a>Component Naming Conventions</h3><p>When registering components (or props), you can use kebab-case, camelCase, or TitleCase. Vue doesn’t care.</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// in a component definition</span></div><div class="line">components: &#123;</div><div class="line">  <span class="comment">// register using kebab-case</span></div><div class="line">  <span class="string">'kebab-cased-component'</span>: &#123; <span class="comment">/* ... */</span> &#125;,</div><div class="line">  <span class="comment">// register using camelCase</span></div><div class="line">  <span class="string">'camelCasedComponent'</span>: &#123; <span class="comment">/* ... */</span> &#125;,</div><div class="line">  <span class="comment">// register using TitleCase</span></div><div class="line">  <span class="string">'TitleCasedComponent'</span>: &#123; <span class="comment">/* ... */</span> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>Within HTML templates though, you have to use the kebab-case equivalents:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- alway use kebab-case in HTML templates --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kebab-cased-component</span>&gt;</span><span class="tag">&lt;/<span class="name">kebab-cased-component</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">camel-cased-component</span>&gt;</span><span class="tag">&lt;/<span class="name">camel-cased-component</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">title-cased-component</span>&gt;</span><span class="tag">&lt;/<span class="name">title-cased-component</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- always use kebab-case in HTML templates --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kebab-cased-component</span>&gt;</span><span class="tag">&lt;/<span class="name">kebab-cased-component</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">camel-cased-component</span>&gt;</span><span class="tag">&lt;/<span class="name">camel-cased-component</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">title-cased-component</span>&gt;</span><span class="tag">&lt;/<span class="name">title-cased-component</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>When using <em>string</em> templates however, we’re not bound by HTML’s case-insensitive restrictions. That means even in the template, you reference your components and props using camelCase, TitleCase, or kebab-case:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- use whatever you want in string templates! --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">my-component</span>&gt;</span><span class="tag">&lt;/<span class="name">my-component</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">myComponent</span>&gt;</span><span class="tag">&lt;/<span class="name">myComponent</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">MyComponent</span>&gt;</span><span class="tag">&lt;/<span class="name">MyComponent</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>If your component isn’t passed content via <code>slot</code> elements, you can even make it self-closing with a <code>/</code> after the name:</p>
@@ -1007,7 +1007,8 @@ new Vue({
             <script src="/js/smooth-scroll.min.js"></script>
         
 
-        <!-- main custom script for sidebars, version selects etc. -->
+        <!-- main custom script for sidebars, version selects etc. -->        
+        <script src="/js/css.escape.js"></script>
         <script src="/js/common.js"></script>
 
         <!-- search -->
