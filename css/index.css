@@ -324,7 +324,7 @@ a.button.white {
 }
 #header {
   background-color: #fff;
-  height: $heading-inner-height;
+  height: 40px;
   padding: 10px 60px;
   position: relative;
   z-index: 2;
@@ -495,8 +495,13 @@ body.docs #nav {
   color: #7f8c8d;
   font-size: 0.85em;
 }
-.sidebar .main-sponsor a {
+.sidebar .main-sponsor .logo {
+  color: #7f8c8d;
   margin: 10px 0;
+  background-color: #f3f3f3;
+  padding: 10px 0;
+  text-align: center;
+  font-weight: bold;
 }
 .sidebar .main-sponsor img,
 .sidebar .main-sponsor a {
